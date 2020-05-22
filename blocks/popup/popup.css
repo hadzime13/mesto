@@ -1,0 +1,18 @@
+@import url('./__closebtn/popup__closebtn.css');
+@import url('./__container/popup__container.css');
+@import url('./__profile-edit/popup__profile-edit.css');
+@import url('./__savebtn/popup__savebtn.css');
+@import url('./__text/popup__text.css');
+@import url('./_opened/popup_opened.css');
+@import url('./__name/popup__name.css');
+.popup {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,15 @@
+.photo-elements__name {
+  margin: 0;
+  color: #000000;
+  padding: 25px 0 25px 21px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+@media (max-width: 650px) {
+  .photo-elements__name {
+    padding: 26px 0 25px 21px;
+  }
+}

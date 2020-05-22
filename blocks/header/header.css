@@ -1,0 +1,10 @@
+.header {
+  padding: 45px 0 33px;
+  border-bottom: 1px solid rgb(84, 84, 84, 0.7);
+}
+
+@media (max-width: 650px) {
+  .header {
+    padding: 28px 0 27px 15px;
+  }
+}

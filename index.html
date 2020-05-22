@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Первый спринт по JS">
+  <meta name="author" content="Андрей Варламов">
+  <title>Mesto</title>
+  <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="page">
+  <div class="page__container">
+    <header class="header section section_standard">
+      <img src="./images/logo.svg" alt="Логотип Место" class="logo">
+    </header>
+    <main class="content">
+      <section class="profile section section_standard">
+        <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button type="button" class="edit-btn">
+          </button>
+          <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button type="button" class="add-btn add-btn_profile">
+        </button>
+      </section>
+      <section class="photo-elements section section_standard">
+        <ul class="photo-elements__list">
+          <li class="photo-elements__list-item">
+            <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Камчатка
+            </h2>
+            <button class="like like_photo"></button>
+          </li>
+          <li class="photo-elements__list-item">
+            <img src="./images/sochi.jpg" alt="Сочи" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Сочи
+            </h2>
+            <button type="button" class="like like_photo"></button>
+          </li>
+          <li class="photo-elements__list-item">
+            <img src="./images/baikal.jpg" alt="Байкал" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Байкал
+            </h2>
+            <button type="button" class="like like_photo"></button>
+          </li>
+          <li class="photo-elements__list-item">
+            <img src="./images/dombai.jpg" alt="Домбай" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Домбай
+            </h2>
+            <button type="button" class="like like_photo"></button>
+          </li>
+          <li class="photo-elements__list-item">
+            <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Карачаевск
+            </h2>
+            <button type="button" class="like like_photo"></button>
+          </li>
+          <li class="photo-elements__list-item">
+            <img src="./images/elbrus.jpg" alt="Эльбрус" class="photo-elements__image">
+            <h2 class="photo-elements__name">
+              Эльбрус
+            </h2>
+            <button type="button" class="like like_photo"></button>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer section section_standard">
+      <p class="footer__copyright">© 2020 Mesto Russia</p>
+    </footer>
+  </div>
+  <section class="popup">
+    <form class="popup__container">
+      <button type="reset" class="popup__closebtn"></button>
+      <h2 class="popup__name">
+        Редактировать профиль
+      </h2>
+      <fieldset class="popup__profile-edit">
+        <input type="text" placeholder="Имя" name="inputName" value="" class="popup__text popup__text_el_name" required
+          maxlength="28">
+        <input type="text" placeholder="Профессия" name="inputJob" value=""
+          class="popup__text popup__text_el_job" required maxlength="28">
+        <button type="submit" class="popup__savebtn">
+          Сохранить
+        </button>
+      </fieldset>
+    </form>
+  </section>
+  <script src="./pages/script.js"></script>
+</body>
+
+</html>
