@@ -2,3 +2,9 @@
   padding: 54px 0 0;
   border: none;
 }
+
+@media (max-width : 650px) {
+  .popup__profile-edit {
+  padding: 24px 0 0;
+}
+}

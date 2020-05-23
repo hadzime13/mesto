@@ -6,3 +6,9 @@
   font-size: 14px;
   line-height: 17px;
 }
+
+@media (max-width : 650px) {
+  .popup__text_el_job {
+    margin: 0 0 30px;
+}
+}
