@@ -14,5 +14,6 @@
 @import url('../blocks/photo-elements/photo-elements.css');
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/_opened/popup_opened.css');
 @import url('../blocks/popup/__text/_el/popup__text_el_job.css');
 @import url('../blocks/popup/__text/_el/popup__text_el_name.css');

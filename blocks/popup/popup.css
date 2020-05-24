@@ -3,7 +3,6 @@
 @import url('./__profile-edit/popup__profile-edit.css');
 @import url('./__savebtn/popup__savebtn.css');
 @import url('./__text/popup__text.css');
-@import url('./_opened/popup_opened.css');
 @import url('./__name/popup__name.css');
 .popup {
   display: none;

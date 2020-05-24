@@ -8,3 +8,10 @@
     padding: 28px 0 27px 15px;
   }
 }
+
+@media (max-width: 330px) {
+  .header {
+    max-width: 100%;
+  }
+}
+

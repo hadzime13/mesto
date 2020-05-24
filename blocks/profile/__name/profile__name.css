@@ -5,11 +5,16 @@
   font-weight: 500;
   font-size: 42px;
   line-height: 1.33;
+  text-overflow: ellipsis; 
+  max-width: 400px; 
+  overflow: hidden; 
+  white-space: nowrap;
 }
-
+ 
 @media (max-width: 950px) {
   .profile__name {
   font-size: 27px;
+  max-width: 200px; 
   }
 }
 

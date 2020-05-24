@@ -5,11 +5,16 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 1.22;
+  text-overflow: ellipsis; 
+  max-width: 400px; 
+  overflow: hidden; 
+  white-space: nowrap;
 }
 
 @media (max-width: 950px) {
   .profile__job {
     font-size: 16px;
+    max-width: 200px; 
   }
 }
 
