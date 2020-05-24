@@ -1,11 +1,9 @@
 // Переменные
 // для попапа
 const popup = document.querySelector('.popup');
-// для имени и профессии в профайле и их текста
+// для имени и профессии в профайле
 const profileName = document.querySelector('.profile__name');
-const profileNameText = profileName.textContent;
 const profileJob = document.querySelector('.profile__job');
-const profileJobText = profileJob.textContent;
 // для полей ввода в попапе 
 const inputName = document.querySelector('.popup__text_el_name'); 
 const inputJob = document.querySelector('.popup__text_el_job');
@@ -17,11 +15,14 @@ const form = document.querySelector('.popup__container');
 
 // Фукнкция открытия/закрытия Попапа
 function popupOpenClose() {
-  if (popup.classList.contains('popup_opened') {
+  if (popup.classList.contains('popup_opened')) {
     popup.classList.remove('popup_opened');
   }
   else { 
     popup.classList.add('popup_opened');
+// Переменные для текста имени и профессии в профайле
+    const profileNameText = profileName.textContent;
+    const profileJobText = profileJob.textContent;
     inputName.value = profileNameText;
     inputJob.value = profileJobText;
   }
@@ -29,9 +30,9 @@ function popupOpenClose() {
 // Функция сохранения значений, введенных в попап  
 function formSubmit(evt) {
   evt.preventDefault();
-  profileName.innerHTML = inputName.value;
-  profileJob.innerHTML = inputJob.value;
-  popupOpenClose;
+  profileName.textContent = inputName.value;
+  profileJob.textContent = inputJob.value;
+  popup.classList.remove('popup_opened');
 }
 
 editButton.addEventListener('click', popupOpenClose);
