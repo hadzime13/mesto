@@ -29,9 +29,9 @@ function popupOpenClose() {
 // Функция сохранения значений, введенных в попап  
 function formSubmit(evt) {
   evt.preventDefault();
-  profileName.I = inputName.value;
-  profileJob.textContent = inputJob.value;
-  popup.classList.remove('popup_opened');
+  profileName.innerHTML = inputName.value;
+  profileJob.innerHTML = inputJob.value;
+  popupOpenClose;
 }
 
 editButton.addEventListener('click', popupOpenClose);
