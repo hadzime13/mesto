@@ -8,8 +8,8 @@ const profileJob = document.querySelector('.profile__job');
 const inputName = document.querySelector('.popup__text_el_name'); 
 const inputJob = document.querySelector('.popup__text_el_job');
 // для кнопок попапа 
-const editButton = document.querySelector('.edit-btn');
-const closeButton = document.querySelector('.popup__closebtn');
+const editButton = document.querySelector('.profile__edit-btn');
+const closeButton = document.querySelector('.popup__close-btn');
 //для формы попапа
 const form = document.querySelector('.popup__container');
 

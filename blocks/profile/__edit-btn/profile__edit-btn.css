@@ -1,10 +1,10 @@
-.edit-btn {
+.profile__edit-btn {
   width: 24px;
   height: 24px;
   padding: 0;
   border: 1px solid #ffffff;
   background-color: #000000;
-  background-image: url('../../images/edit-btn.svg');
+  background-image: url('../../../images/edit-btn.svg');
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -12,13 +12,13 @@
   transition: opacity 1s ease-out;
 }
 
-.edit-btn:hover {
+.profile__edit-btn:hover {
   opacity: 0.6;
 }
 
 
 @media (max-width: 650px) {
-  .edit-btn {
+  .profile__edit-btn {
     width: 18px;
     height: 18px;
     padding: 0 0 0 5px;

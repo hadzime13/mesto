@@ -1,4 +1,4 @@
-.popup__savebtn {
+.popup__save-btn {
   display: block;
   width: 100%;
   padding: 14px 0;
@@ -13,7 +13,7 @@
   text-align: center;
   transition: background-color 1s ease-out;
 }
-.popup__savebtn:hover {
+.popup__save-btn:hover {
   background-color:rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }

@@ -7,7 +7,6 @@
   <meta name="description" content="Первый спринт по JS">
   <meta name="author" content="Андрей Варламов">
   <title>Mesto</title>
-  <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -21,22 +20,22 @@
         <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак Ив-Кусто</h1>
-          <button type="button" class="edit-btn">
+          <button type="button" class="profile__edit-btn">
           </button>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button type="button" class="add-btn add-btn_profile">
+        <button type="button" class="profile__add-btn">
         </button>
       </section>
       <section class="photo-elements section section_standard">
         <ul class="photo-elements__list">
           <li class="photo-elements__list-item">
-            <!-- <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-elements__image"> -->
             <img src="./images/kamchatka.jpg" alt="Камчатка" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Камчатка
             </h2>
-            <button class="like like_photo"></button>
+            <!-- Ведь кнопку лайк можно еще где-то использовать (поэтому сделал блоком), почему она должна быть элементом? -->
+            <button type="button" class="like like_photo"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/sochi.jpg" alt="Сочи" class="photo-elements__image">
@@ -77,21 +76,21 @@
       </section>
     </main>
     <footer class="footer section section_standard">
-      <p class="footer__copyright">© 2020 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
   </div>
   <section class="popup">
-    <form class="popup__container">
-      <button type="reset" class="popup__closebtn"></button>
+    <form action="#" method="POST" class="popup__container">
+      <button type="reset" class="popup__close-btn"></button>
       <h2 class="popup__name">
         Редактировать профиль
       </h2>
       <fieldset class="popup__profile-edit">
-        <input type="text" placeholder="Имя" name="inputName" value="" class="popup__text popup__text_el_name" required
-          maxlength="28">
-        <input type="text" placeholder="Профессия" name="inputJob" value="" class="popup__text popup__text_el_job"
-          required maxlength="28">
-        <button type="submit" class="popup__savebtn">
+        <input type="text" placeholder="Имя" name="input-name" value="" class="popup__text popup__text_el_name"
+          required>
+        <input type="text" placeholder="Профессия" name="input-job" value="" class="popup__text popup__text_el_job"
+          required>
+        <button type="submit" class="popup__save-btn">
           Сохранить
         </button>
       </fieldset>
