@@ -20,11 +20,11 @@
         <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
         <div class="profile__info">
           <h1 class="profile__name">Жак Ив-Кусто</h1>
-          <button type="button" class="profile__edit-btn">
+          <button type="button" aria-label="Редактировать" class="profile__edit-btn">
           </button>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button type="button" class="profile__add-btn">
+        <button type="button" aria-label="Добавить" class="profile__add-btn">
         </button>
       </section>
       <section class="photo-elements section section_standard">
@@ -34,43 +34,42 @@
             <h2 class="photo-elements__name">
               Камчатка
             </h2>
-            <!-- Ведь кнопку лайк можно еще где-то использовать (поэтому сделал блоком), почему она должна быть элементом? -->
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/sochi.jpg" alt="Сочи" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Сочи
             </h2>
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/baikal.jpg" alt="Байкал" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Байкал
             </h2>
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/dombai.jpg" alt="Домбай" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Домбай
             </h2>
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/karachaevsk.jpg" alt="Карачаевск" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Карачаевск
             </h2>
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
           <li class="photo-elements__list-item">
             <img src="./images/elbrus.jpg" alt="Эльбрус" class="photo-elements__image">
             <h2 class="photo-elements__name">
               Эльбрус
             </h2>
-            <button type="button" class="like like_photo"></button>
+            <button type="button" class="photo-elements__like"></button>
           </li>
         </ul>
       </section>
@@ -81,7 +80,7 @@
   </div>
   <section class="popup">
     <form action="#" method="POST" class="popup__container">
-      <button type="reset" class="popup__close-btn"></button>
+      <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
       <h2 class="popup__name">
         Редактировать профиль
       </h2>

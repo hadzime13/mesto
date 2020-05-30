@@ -1,9 +1,10 @@
-.like {
+.photo-elements__like {
+  margin: 32px 15px 0 0;
   width: 21px;
   height: 19px;
   border: none;
   background-color: #ffffff;
-  background-image: url('../../images/like.svg');
+  background-image: url('../../../images/like.svg');
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -11,6 +12,6 @@
   transition: opacity 1s ease-out;
 }
 
-.like:hover {
+.photo-elements__like:hover {
   opacity: 0.6;
 }
