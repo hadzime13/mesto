@@ -32,7 +32,7 @@ function formSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
-  popup.classList.remove('popup_opened');
+  popupOpenClose();
 }
 
 editButton.addEventListener('click', popupOpenClose);
