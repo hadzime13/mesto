@@ -1,4 +1,5 @@
 .photo-elements__image {
   max-height: 282px;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }

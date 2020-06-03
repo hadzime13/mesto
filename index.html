@@ -33,7 +33,7 @@
         <ul class="photo-elements__list">
         </ul>
       </section>
-      
+
       <template class="photo-element">
         <li class="photo-elements__list-item">
           <img class="photo-elements__image">
@@ -48,17 +48,35 @@
     </footer>
   </div>
 
-  <section class="popup">
+  <section class="popup popup_profile">
     <form action="#" method="POST" class="popup__container">
       <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
       <h2 class="popup__name">
         Редактировать профиль
       </h2>
-      <fieldset class="popup__profile-edit">
+      <fieldset class="popup__input-form">
         <input type="text" placeholder="Имя" name="input-name" value="" class="popup__text popup__text_el_name"
           required>
         <input type="text" placeholder="Профессия" name="input-job" value="" class="popup__text popup__text_el_job"
           required>
+        <button type="submit" class="popup__save-btn">
+          Сохранить
+        </button>
+      </fieldset>
+    </form>
+  </section>
+
+  <section class="popup popup_cards">
+    <form action="#" method="POST" class="popup__container">
+      <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
+      <h2 class="popup__name">
+        Новое место
+      </h2>
+      <fieldset class="popup__input-form">
+        <input type="text" placeholder="Название" name="input-name" value="" class="popup__text popup__text_el_place"
+          required>
+        <input type="text" placeholder="Ссылка на картинку" name="input-link" value=""
+          class="popup__text popup__text_el_image-link" required>
         <button type="submit" class="popup__save-btn">
           Сохранить
         </button>
