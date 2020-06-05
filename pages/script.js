@@ -21,6 +21,7 @@ const profileForm = popupProfile.querySelector('.popup__container');
 const popupOpenClose = (element) => {
   element.classList.toggle('popup_opened');
 }
+
 // Функция заполнения полей попапа профиля
 
 const profileEdit = () => {
@@ -38,14 +39,14 @@ const profileFormSubmit = (evt) => {
 }
 // "Слушатели" попапа профиля
 editButton.addEventListener('click', profileEdit);
-closeButton.addEventListener('click', function () {popupOpenClose(popupProfile)});
+closeButton.addEventListener('click', function () { popupOpenClose(popupProfile) });
 profileForm.addEventListener('submit', profileFormSubmit);
 
 // *** Загрузка/редактирование карточек мест
 
 // Переменные
 // для шаблона карточки и списка, куда добавляем карточки
-const cardTemplate = document.querySelector('.photo-element').content;
+const cardTemplate = document.querySelector('.template-photo').content;
 const cardsArea = document.querySelector('.photo-elements__list');
 // Первоначальный массив карточек
 
@@ -75,19 +76,27 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
-// Функция загрузки карточек
+// Функция создания карточки и слушателей в ней
 
-const addCards = (name, link) => {
-    const cardElement = cardTemplate.cloneNode(true);
-    cardElement.querySelector('.photo-elements__image').src = link;
-    cardElement.querySelector('.photo-elements__image').alt = name;
-    cardElement.querySelector('.photo-elements__name').textContent = name;
-    cardsArea.append(cardElement);
-  };
+const createCard = (name, link) => {
+  const cardElement = cardTemplate.cloneNode(true);
+  cardElement.querySelector('.photo-elements__image').src = link;
+  cardElement.querySelector('.photo-elements__image').alt = name;
+  cardElement.querySelector('.photo-elements__name').textContent = name;
+  cardElement.querySelector('.photo-elements__like').addEventListener('click', function (evt) {
+    evt.target.classList.toggle('photo-elements__like_active');
+  });
+  const deleteButton = cardElement.querySelector('.photo-elements__delete-btn');
+  deleteButton.addEventListener('click', function () {
+    deleteButton.closest('.photo-elements__list-item').remove();
+  });
+  cardElement.querySelector('.photo-elements__image').addEventListener('click', photoPopupOpen)
+  return cardElement;
+};
 
 // Загружаем первые 6 карточек из массива
 initialCards.forEach(elem => {
-  addCards(elem.name, elem.link);
+  cardsArea.prepend(createCard(elem.name, elem.link));
 });
 
 // // *** Попап добавления карточки 
@@ -104,17 +113,41 @@ const cardsCloseButton = popupAddCards.querySelector('.popup__close-btn');
 //для формы попапа редактирования профиля
 const cardAddForm = popupAddCards.querySelector('.popup__container');
 
-// Функция добавления карточки пользователем
-  
+// Функции добавления карточки пользователем
+
+const cardPopupOpen = () => {
+  inputCardLink.value = '';
+  inputCardName.value = '';
+  popupOpenClose(popupAddCards);
+}
+
 const cardsFormSubmit = (evt) => {
   evt.preventDefault();
-  console.log(inputCardName.value, inputCardLink.value);
-  addCards(inputCardName.value, inputCardLink.value);
+  cardsArea.prepend(createCard(inputCardName.value, inputCardLink.value));
   popupOpenClose(popupAddCards);
 };
 
 // Слушатели попапа добавления карточек
 
-addButton.addEventListener('click', function () {popupOpenClose(popupAddCards)});
-cardsCloseButton.addEventListener('click', function () {popupOpenClose(popupAddCards)});
+addButton.addEventListener('click', cardPopupOpen);
+cardsCloseButton.addEventListener('click', function () { popupOpenClose(popupAddCards) });
 cardAddForm.addEventListener('submit', cardsFormSubmit);
+
+// *** Попап с фото
+// Переменные
+
+const popupPhoto = document.querySelector('.popup_photo');
+const photoCloseButton = popupPhoto.querySelector('.popup__close-btn');
+
+// Функция попапа с фото
+
+function photoPopupOpen(evt) {
+  evt.preventDefault();
+  popupPhoto.querySelector('.popup__image').src = evt.target.src;
+  popupPhoto.querySelector('.popup__image').alt = evt.target.alt;
+  popupPhoto.querySelector('.popup__photo-name').textContent = evt.target.nextElementSibling.textContent;
+  popupOpenClose(popupPhoto);
+}
+
+// Слушатель закрытия попапа с фото
+photoCloseButton.addEventListener('click', function () { popupOpenClose(popupPhoto) });

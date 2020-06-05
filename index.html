@@ -29,13 +29,14 @@
         </button>
       </section>
 
-      <section class="photo-elements section section_standard">
+      <section class="photo-elements section section_standard" aria-label="Места">
         <ul class="photo-elements__list">
         </ul>
       </section>
 
-      <template class="photo-element">
+      <template class="template-photo">
         <li class="photo-elements__list-item">
+          <button type="button" class="photo-elements__delete-btn"></button>
           <img class="photo-elements__image">
           <h2 class="photo-elements__name"></h2>
           <button type="button" class="photo-elements__like"></button>
@@ -83,6 +84,17 @@
       </fieldset>
     </form>
   </section>
+
+  <section class="popup popup_photo">
+    <div class="popup__photo-container">
+      <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
+      <img src="#" alt="#" class="popup__image">
+      <h3 class="popup__photo-name">
+        Название места
+      </h3>
+    </div>
+  </section>
+
 
   <script src="./pages/script.js"></script>
 </body>

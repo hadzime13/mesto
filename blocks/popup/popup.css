@@ -4,8 +4,12 @@
 @import url('./__save-btn/popup__save-btn.css');
 @import url('./__text/popup__text.css');
 @import url('./__name/popup__name.css');
+@import url('./_photo/popup_photo.css');
+@import url('./__photo-container/popup__photo-container.css');
+@import url('./__image/popup__image.css');
+@import url('./__photo-name/popup__photo-name.css');
 .popup {
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
@@ -14,4 +18,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease-out;
 }
