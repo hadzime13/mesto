@@ -8,7 +8,10 @@
   line-height: 15px;
   text-align: center;
   color: #000000;
+  transition: transform 0.9s ease-in-out;
+  overflow: hidden;
 }
+
 .photo-elements__image::before {
   content: "Извините, со ссылкой на изображение кажется что-то пошло не так :(";
   display: block;
@@ -19,5 +22,9 @@
   content: "(url: " attr(src) ")";
   display: block;
   margin-top: 20px;
+}
+
+.photo-elements__image:hover {
+  transform: scale(1.03);
 }
 

@@ -211,6 +211,15 @@ button::-moz-focus-inner,
   padding: 0;
 }
 
+/* Remove outline  */
+button:hover {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
 /**
  * Restore the focus styles unset by the previous rule.
  */
