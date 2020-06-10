@@ -56,10 +56,15 @@
         Редактировать профиль
       </h2>
       <fieldset class="popup__input-form">
-        <input type="text" placeholder="Имя" name="input-name" value="" class="popup__text popup__text_el_name"
-          required>
+
+        <input type="text" placeholder="Имя" name="input-name" value="" class="popup__text popup__text_el_name" required
+          minlength="2" maxlength="40">
+        <span class="popup__error" id="input-name-error"></span>
+
         <input type="text" placeholder="Профессия" name="input-job" value="" class="popup__text popup__text_el_job"
-          required>
+          required minlength="2" maxlength="200">
+        <span class="popup__error" id="input-job-error"></span>
+
         <button type="submit" class="popup__save-btn">
           Сохранить
         </button>
@@ -74,10 +79,14 @@
         Новое место
       </h2>
       <fieldset class="popup__input-form">
-        <input type="text" placeholder="Название" name="input-name" value="" class="popup__text popup__text_el_place"
-          required>
-        <input type="text" placeholder="Ссылка на картинку" name="input-link" value=""
+        <input type="text" placeholder="Название" name="input-place" value="" class="popup__text popup__text_el_place"
+          required minlength="2" maxlength="40">
+        <span class="popup__error" id="input-place-error"></span>
+
+        <input type="url" placeholder="Ссылка на картинку" name="input-link" value=""
           class="popup__text popup__text_el_image-link" required>
+        <span class="popup__error" id="input-link-error"></span>
+
         <button type="submit" class="popup__save-btn">
           Сохранить
         </button>
@@ -95,7 +104,7 @@
     </div>
   </section>
 
-<script src="./scripts/initial-cards.js"></script>
+  <script src="./scripts/initial-cards.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 
