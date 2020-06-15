@@ -42,7 +42,6 @@ const popupOpenClose = (element) => {
   element.classList.toggle('popup_opened');
 };
 
-
 // Функция обработки закрытия попапа (очистка ошибок, снятие слушателей)
 
 const closePopupHandle = (popup) => {
@@ -74,9 +73,6 @@ const popupExitOnOverlayClick = (evt) => {
     }
   };
 };
-
-
-
 
 // Функция заполнения полей попапа профиля
 const profileEdit = () => {
@@ -142,6 +138,8 @@ function photoPopupOpen(evt) {
   popupPhoto.querySelector('.popup__image').src = evt.target.src;
   popupPhoto.querySelector('.popup__image').alt = evt.target.alt;
   popupPhoto.querySelector('.popup__photo-name').textContent = evt.target.nextElementSibling.textContent;
+  document.addEventListener('keydown', popupExitOnEsc);
+  document.addEventListener('click', popupExitOnOverlayClick);
   popupOpenClose(popupPhoto);
 }
 
@@ -160,7 +158,7 @@ cardAddForm.addEventListener('submit', cardsFormSubmit);
 
 
 // Слушатель закрытия попапа с фото
-photoCloseButton.addEventListener('click', function () { popupOpenClose(popupPhoto) });
+photoCloseButton.addEventListener('click', function () { closePopupHandle(popupPhoto) });
 
 // Загружаем первые 6 карточек из массива
 initialCards.forEach(elem => {
