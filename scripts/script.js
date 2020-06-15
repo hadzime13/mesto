@@ -40,13 +40,54 @@ const photoCloseButton = popupPhoto.querySelector('.popup__close-btn');
 // Функция открытия/закрытия попапов
 const popupOpenClose = (element) => {
   element.classList.toggle('popup_opened');
-}
+};
+
+
+// Функция обработки закрытия попапа (очистка ошибок, снятие слушателей)
+
+const closePopupHandle = (popup) => {
+  const inputs = Array.from(popup.querySelectorAll('.popup__text'));
+  inputs.forEach((input) => {
+    hideErrors(input, popup.querySelector(`#${input.id}-error`), classnames);
+  });
+  document.removeEventListener('keydown', popupExitOnEsc);
+  document.removeEventListener('click', popupExitOnOverlayClick);
+  popupOpenClose(popup);
+};
+
+// Функция закрытия попапа на Escape
+const popupExitOnEsc = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    if (openedPopup) {
+      closePopupHandle(openedPopup);
+    };
+  };
+};
+
+// Функция закрытия попапа кликом на оверлей
+const popupExitOnOverlayClick = (evt) => {
+  const openedPopup = document.querySelector('.popup_opened');
+  if (evt.target === openedPopup) {
+    if (openedPopup) {
+      closePopupHandle(openedPopup);
+    }
+  };
+};
+
+
+
 
 // Функция заполнения полей попапа профиля
 const profileEdit = () => {
   popupOpenClose(popupProfile);
   inputName.value = profileName.textContent;
   inputJob.value = profileJob.textContent;
+  toggleButtonState(popupProfile.querySelector(classnames.formSelector),
+    popupProfile.querySelector(classnames.submitButtonSelector),
+    classnames);
+  document.addEventListener('keydown', popupExitOnEsc);
+  document.addEventListener('click', popupExitOnOverlayClick);
 }
 
 // Функция сохранения значений, введенных в попап профиля  
@@ -81,6 +122,11 @@ const cardPopupOpen = () => {
   inputCardLink.value = '';
   inputCardName.value = '';
   popupOpenClose(popupAddCards);
+  toggleButtonState(popupAddCards.querySelector(classnames.formSelector),
+    popupAddCards.querySelector(classnames.submitButtonSelector),
+    classnames);
+  document.addEventListener('keydown', popupExitOnEsc);
+  document.addEventListener('click', popupExitOnOverlayClick);
 }
 
 const cardsFormSubmit = (evt) => {
@@ -103,13 +149,13 @@ function photoPopupOpen(evt) {
 
 // "Слушатели" попапа профиля
 editButton.addEventListener('click', profileEdit);
-closeButton.addEventListener('click', function () { popupOpenClose(popupProfile) });
+closeButton.addEventListener('click', function () { closePopupHandle(popupProfile) });
 profileForm.addEventListener('submit', profileFormSubmit);
 
 
 // Слушатели попапа добавления карточек
 addButton.addEventListener('click', cardPopupOpen);
-cardsCloseButton.addEventListener('click', function () { popupOpenClose(popupAddCards) });
+cardsCloseButton.addEventListener('click', function () { closePopupHandle(popupAddCards) });
 cardAddForm.addEventListener('submit', cardsFormSubmit);
 
 
@@ -120,3 +166,4 @@ photoCloseButton.addEventListener('click', function () { popupOpenClose(popupPho
 initialCards.forEach(elem => {
   cardsArea.prepend(createCard(elem.name, elem.link));
 });
+enableValidation(classnames);

@@ -50,19 +50,19 @@
   </div>
 
   <section class="popup popup_profile">
-    <form action="#" method="POST" class="popup__container">
+    <form action="#" method="POST" class="popup__container" novalidate>
       <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
       <h2 class="popup__name">
         Редактировать профиль
       </h2>
       <fieldset class="popup__input-form">
 
-        <input type="text" placeholder="Имя" name="input-name" value="" class="popup__text popup__text_el_name" required
-          minlength="2" maxlength="40">
+        <input type="text" placeholder="Имя" name="input-name" id="input-name" value="" class="popup__text popup__text_el_name" required
+          minlength="2" maxlength="40" autocomplete="off">
         <span class="popup__error" id="input-name-error"></span>
 
-        <input type="text" placeholder="Профессия" name="input-job" value="" class="popup__text popup__text_el_job"
-          required minlength="2" maxlength="200">
+        <input type="text" placeholder="Профессия" name="input-job" id="input-job" value="" class="popup__text popup__text_el_job"
+          required minlength="2" maxlength="200"autocomplete="off">
         <span class="popup__error" id="input-job-error"></span>
 
         <button type="submit" class="popup__save-btn">
@@ -73,22 +73,22 @@
   </section>
 
   <section class="popup popup_cards">
-    <form action="#" method="POST" class="popup__container">
+    <form action="#" method="POST" class="popup__container" novalidate>
       <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
       <h2 class="popup__name">
         Новое место
       </h2>
       <fieldset class="popup__input-form">
-        <input type="text" placeholder="Название" name="input-place" value="" class="popup__text popup__text_el_place"
-          required minlength="2" maxlength="40">
+        <input type="text" placeholder="Название" name="input-place" id="input-place" value="" class="popup__text popup__text_el_place"
+          required minlength="2" maxlength="40" autocomplete="off">
         <span class="popup__error" id="input-place-error"></span>
 
-        <input type="url" placeholder="Ссылка на картинку" name="input-link" value=""
-          class="popup__text popup__text_el_image-link" required>
+        <input type="url" placeholder="Ссылка на картинку" name="input-link" id="input-link" value=""
+          class="popup__text popup__text_el_image-link" required autocomplete="off">
         <span class="popup__error" id="input-link-error"></span>
 
         <button type="submit" class="popup__save-btn">
-          Сохранить
+          Создать
         </button>
       </fieldset>
     </form>
@@ -104,7 +104,9 @@
     </div>
   </section>
 
+  <script src="./scripts/classnames.js"></script>
   <script src="./scripts/initial-cards.js"></script>
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 
