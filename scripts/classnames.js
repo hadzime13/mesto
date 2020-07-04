@@ -1,4 +1,4 @@
-const classnames = {
+export const classnames = {
     formSelector: '.popup__container',
     inputSelector: '.popup__text',
     submitButtonSelector: '.popup__save-btn',
