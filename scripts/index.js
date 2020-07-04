@@ -111,7 +111,7 @@ const cardPopupOpen = () => {
 
 const cardsFormSubmit = (evt) => {
   evt.preventDefault();
-  const card = new Card(inputCardName.value, inputCardLink.value, '.template-photo')
+  const card = new Card(inputCardName.value, inputCardLink.value, '.template-photo', photoPopupOpen)
   cardsArea.prepend(card.createCard());
   closePopupHandle(popupAddCards);
 };
@@ -145,6 +145,6 @@ photoCloseButton.addEventListener('click', function () { closePopupHandle(popupP
 
 // ***Загружаем первые 6 карточек из массива
 initialCards.forEach(elem => {
-  const card = new Card(elem.name, elem.link, '.template-photo')
+  const card = new Card(elem.name, elem.link, '.template-photo', photoPopupOpen)
   cardsArea.prepend(card.createCard());
 });

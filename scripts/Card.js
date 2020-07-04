@@ -1,9 +1,9 @@
-import { photoPopupOpen } from './index.js'
 export class Card {
-  constructor(name, link, cardTemplateSelector) {
+  constructor(name, link, cardTemplateSelector, photoPopupOpen) {
     this._name = name;
     this._link = link;
     this._cardTemplateSelector = cardTemplateSelector;
+    this._photoPopupOpen = photoPopupOpen;
   }
 // Публичный метод - возвращает карточку
   createCard () {
@@ -27,6 +27,6 @@ export class Card {
     deleteButton.addEventListener('click', () => {
       deleteButton.closest('.photo-elements__list-item').remove();
     });
-    cardElement.querySelector('.photo-elements__image').addEventListener('click', photoPopupOpen);
+    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._photoPopupOpen);
   }
 };
