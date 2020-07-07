@@ -1,67 +1,67 @@
 export class FormValidator {
-  constructor(classnames, formElement) {
-    this._classnames = classnames;
+  constructor(formClassNames, formElement) {
+    this._formClassNames = formClassNames;
     this._formElement = formElement;
-    this._inputElements = Array.from(formElement.querySelectorAll(classnames.inputSelector));
-    this._submitButton = formElement.querySelector(classnames.submitButtonSelector);
+    this._inputElements = Array.from(formElement.querySelectorAll(formClassNames.inputSelector));
+    this._submitButton = formElement.querySelector(formClassNames.submitButtonSelector);
   };
   // Публичный метод - валидация формы
   enableValidation() {
     this._inputElements.forEach((inputElement) => {
-      inputElement.addEventListener('input', evt => { this._handleinput(inputElement, this._classnames) });
+      inputElement.addEventListener('input', evt => { this._handleInput(inputElement, this._formClassNames) });
     });
 
     this._formElement.addEventListener('submit', evt => {
       evt.preventDefault();
     });
 
-    this._formElement.addEventListener('input', evt => { this._toggleButtonState(this._formElement, this._submitButton, this._classnames) })
+    this._formElement.addEventListener('input', evt => { this._toggleButtonState(this._formElement, this._submitButton, this._formClassNames) })
   };
 // Публичный метод - сброс ошибок, состояния кнопки
   resetFormValidation() {
     this._inputElements.forEach((input) => {
-      this._hideErrors(input, this._formElement.querySelector(`#${input.id}-error`), this._classnames);
-      this._toggleButtonState(this._formElement, this._submitButton, this._classnames);
+      this._hideErrors(input, this._formElement.querySelector(`#${input.id}-error`), this._formClassNames);
+      this._toggleButtonState(this._formElement, this._submitButton, this._formClassNames);
     });
   }
   // Приватный метод - переключениe состояния кнопки на форме
 
-  _toggleButtonState(formElement, submitButton, classnames) {
+  _toggleButtonState(formElement, submitButton, formClassNames) {
     const hasErrors = !formElement.checkValidity();
     submitButton.disabled = hasErrors;
     submitButton.classList.toggle(
-      classnames.inactiveButtonClass,
+      formClassNames.inactiveButtonClass,
       hasErrors
     );
   };
 
   // Приватный метод - обработка инпутов на форме
-  _handleinput(inputElement, classnames) {
+  _handleInput(inputElement, formClassNames) {
     const error = document.querySelector(`#${inputElement.id}-error`);
-    this._isValid(inputElement, error, classnames);
+    this._isValid(inputElement, error, formClassNames);
   };
 
   // Приватный метод - проверка на валидность
-  _isValid(inputElement, error, classnames) {
+  _isValid(inputElement, error, formClassNames) {
     if (inputElement.checkValidity()) {
-      this._hideErrors(inputElement, error, classnames);
+      this._hideErrors(inputElement, error, formClassNames);
     }
     else {
-      this._showErrors(inputElement, error, classnames);
-    };
+      this._showErrors(inputElement, error, formClassNames);
+    }
   };
 
   // Приватный метод - скрытие ошибок
-  _hideErrors(inputElement, error, classnames) {
-    inputElement.classList.remove(classnames.inputErrorClass);
-    error.classList.remove(classnames.errorClass);
+  _hideErrors(inputElement, error, formClassNames) {
+    inputElement.classList.remove(formClassNames.inputErrorClass);
+    error.classList.remove(formClassNames.errorClass);
     error.textContent = '';
   };
 
   // Приватный метод - показ ошибок
-  _showErrors(inputElement, error, classnames) {
-    inputElement.classList.add(classnames.inputErrorClass);
-    error.classList.add(classnames.errorClass);
+  _showErrors(inputElement, error, formClassNames) {
+    inputElement.classList.add(formClassNames.inputErrorClass);
+    error.classList.add(formClassNames.errorClass);
     error.textContent = inputElement.validationMessage;
   };
-};
+}
