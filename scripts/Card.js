@@ -1,9 +1,9 @@
 export class Card {
-  constructor(name, link, cardTemplateSelector, openPhotoPopup) {
+  constructor(name, link, cardTemplateSelector, openPopup) {
     this._name = name;
     this._link = link;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._openPhotoPopup = openPhotoPopup;
+    this._openPopup = openPopup;
   }
 // Публичный метод - возвращает карточку
   createCard () {
@@ -19,14 +19,14 @@ export class Card {
     cardElementImage.src = this._link;
     cardElementImage.alt = this._name;
     cardElementName.textContent = this._name;
-  }
+  };
 // Методы для слушателей
 _toggleLike (evt) {
   evt.target.classList.toggle('photo-elements__like_active');
-}
+};
 _removeCard(evt) {
   evt.target.closest('.photo-elements__list-item').remove();
-}
+};
 
 // Приватный метод - слушатели
   _handleCardListeners (cardElement) {
@@ -34,6 +34,6 @@ _removeCard(evt) {
     cardElementLike.addEventListener('click', this._toggleLike);
     const cardDeleteButton = cardElement.querySelector('.photo-elements__delete-btn');
     cardDeleteButton.addEventListener('click', this._removeCard);
-    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._openPhotoPopup);
-  }
+    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._openPopup);
+  };
 }
