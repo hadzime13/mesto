@@ -17,7 +17,7 @@ export class FormValidator {
 
     this._formElement.addEventListener('input', evt => { this._toggleButtonState(this._formElement, this._submitButton, this._formClassNames) })
   };
-// Публичный метод - сброс ошибок, состояния кнопки
+  // Публичный метод - сброс ошибок, состояния кнопки
   resetFormValidation() {
     this._inputElements.forEach((input) => {
       this._hideErrors(input, this._formElement.querySelector(`#${input.id}-error`), this._formClassNames);
