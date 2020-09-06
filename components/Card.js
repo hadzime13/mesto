@@ -1,9 +1,9 @@
-export class Card {
-  constructor(name, link, cardTemplateSelector, openPhotoPopup) {
+export default class Card {
+  constructor({ name, link, cardTemplateSelector, handleCardClick }) {
     this._name = name;
     this._link = link;
     this._cardTemplateSelector = cardTemplateSelector;
-    this._openPhotoPopup = openPhotoPopup;
+    this._handleCardClick = handleCardClick;
   }
   // Публичный метод - возвращает карточку
   createCard() {
@@ -34,6 +34,6 @@ export class Card {
     cardElementLike.addEventListener('click', this._toggleLike);
     const cardDeleteButton = cardElement.querySelector('.photo-elements__delete-btn');
     cardDeleteButton.addEventListener('click', this._removeCard);
-    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._openPhotoPopup);
+    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._handleCardClick);
   };
 }
