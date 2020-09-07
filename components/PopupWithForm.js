@@ -29,7 +29,11 @@ export default class PopupWithForm extends Popup {
     super.close();
     this._inputList = this._popup.querySelectorAll('.popup__text');
     this._inputList.forEach(input => {
-      input.value = "";
+      input.value = '';
     })
+  }
+  // 
+  fillUserInfo(info) {
+
   }
 }

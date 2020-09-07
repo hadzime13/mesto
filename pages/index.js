@@ -8,28 +8,34 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 import './index.css';
 
-// *** Переменные (по совету наставника - т.к они используются только в этом файле, оставил их здесь.
-// Если нужно - вынесу в constants.)
+// Селектор формы попапа
+const popupFormSelector = '.popup__container';
+
 
 // Попап профиля, его форма и кнопка открытия
 
 const popupProfileSelector = '.popup_profile';
+const popupProfileButton = '.profile__edit-btn';
 const popupProfileForm = document
   .querySelector(popupProfileSelector)
-  .querySelector('.popup__container');
-const profileEditButton = document.querySelector('.profile__edit-btn');
+  .querySelector(popupFormSelector);
+const profileEditButton = document.querySelector(popupProfileButton);
 
 // Поля имени и профессии в профиле
 const profileNameSelector = '.profile__name';
 const profileJobSelector = '.profile__job';
+const popupProfileNameSelector = '.popup__text_el_name';
+const popupProfileJobSelector = '.popup__text_el_job';
+
 
 // Попап карточки, его форма и кнопка открытия
 
 const popupCardSelector = '.popup_cards';
+const popupCardButton = '.profile__add-btn';
 const popupCardsForm = document
   .querySelector(popupCardSelector)
-  .querySelector('.popup__container');
-const cardAddButton = document.querySelector('.profile__add-btn');
+  .querySelector(popupFormSelector);
+const cardAddButton = document.querySelector(popupCardButton);
 
 // Попап с фото
 const popupPhotoSelector = '.popup_photo';
@@ -53,7 +59,8 @@ CardsValidator.enableValidation();
 const popupPhoto = new PopupWithImage(popupPhotoSelector);
 
 // Класс с инфо о пользователе
-const userInfo = new UserInfo(profileNameSelector, profileJobSelector);
+const userInfo = new UserInfo(profileNameSelector, profileJobSelector, popupProfileNameSelector, popupProfileJobSelector);
+
 
 // Класс попапа профиля
 const popupProfile = new PopupWithForm({
@@ -105,7 +112,14 @@ const popupCard = new PopupWithForm({
 });
 popupCard.setEventListeners();
 
-// Слушатели кнопок открытия попапов профиля и добавления карточки
+// Слушатели кнопок открытия попапов профиля и добавления карточки + заполнение полей и сброс валидации при открытии
 
-profileEditButton.addEventListener('click', popupProfile.open.bind(popupProfile));
-cardAddButton.addEventListener('click', popupCard.open.bind(popupCard));
+profileEditButton.addEventListener('click', function () {
+  popupProfile.open.bind(popupProfile)();
+  userInfo.fillUserForm();
+  ProfileValidator.resetFormValidation();
+});
+cardAddButton.addEventListener('click', function () { 
+  popupCard.open.bind(popupCard)();
+  CardsValidator.resetFormValidation();
+ });
