@@ -18,7 +18,11 @@
     <main class="content">
 
       <section class="profile section section_standard">
-        <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar">
+        <div class="profile__overlay">
+          <div class="profile__avatar">
+            <img src="./images/Vector.svg" alt="Изменить аватар" class="profile__avatar-edit-btn">
+          </div>
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак Ив-Кусто</h1>
           <button type="button" aria-label="Редактировать" class="profile__edit-btn">
@@ -39,7 +43,10 @@
           <button type="button" class="photo-elements__delete-btn"></button>
           <img class="photo-elements__image">
           <h2 class="photo-elements__name"></h2>
-          <button type="button" class="photo-elements__like"></button>
+          <div class="photo-elements__like-wrapper">
+            <button type="button" class="photo-elements__like"></button>
+            <span class="photo-elements__like-span">3</span>
+          </div>
         </li>
       </template>
     </main>
@@ -57,12 +64,12 @@
       </h2>
       <fieldset class="popup__input-form">
 
-        <input type="text" placeholder="Имя" name="input-name" id="input-name" value="" class="popup__text popup__text_el_name" required
-          minlength="2" maxlength="40">
+        <input type="text" placeholder="Имя" name="input-name" id="input-name" value=""
+          class="popup__text popup__text_el_name" required minlength="2" maxlength="40">
         <span class="popup__error" id="input-name-error"></span>
 
-        <input type="text" placeholder="Профессия" name="input-job" id="input-job" value="" class="popup__text popup__text_el_job"
-          required minlength="2" maxlength="200">
+        <input type="text" placeholder="Профессия" name="input-job" id="input-job" value=""
+          class="popup__text popup__text_el_job" required minlength="2" maxlength="200">
         <span class="popup__error" id="input-job-error"></span>
 
         <button type="submit" class="popup__save-btn">
@@ -79,8 +86,8 @@
         Новое место
       </h2>
       <fieldset class="popup__input-form">
-        <input type="text" placeholder="Название" name="input-place" id="input-place" value="" class="popup__text popup__text_el_place"
-          required minlength="1" maxlength="40">
+        <input type="text" placeholder="Название" name="input-place" id="input-place" value=""
+          class="popup__text popup__text_el_place" required minlength="1" maxlength="40">
         <span class="popup__error" id="input-place-error"></span>
 
         <input type="url" placeholder="Ссылка на картинку" name="input-link" id="input-link" value=""
@@ -102,6 +109,35 @@
         Название места
       </h3>
     </div>
+  </section>
+
+  <section class="popup popup_confirm">
+    <form action="#" method="DELETE" class="popup__container" novalidate>
+      <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
+      <h2 class="popup__name">
+        Вы уверены?
+      </h2>
+      <button type="submit" class="popup__save-btn">
+        Да
+      </button>
+    </form>
+  </section>
+
+  <section class="popup popup_avatar">
+    <form action="#" method="POST" class="popup__container" novalidate>
+      <button type="reset" aria-label="Закрыть" class="popup__close-btn"></button>
+      <h2 class="popup__name">
+        Обновить аватар
+      </h2>
+      <fieldset class="popup__input-form">
+        <input type="url" placeholder="Ссылка на avatar" name="input-avatarLink" id="input-avatarLink" value=""
+          class="popup__text popup__text_el_image-link" required>
+        <span class="popup__error" id="input-avatarLink-error"></span>
+        <button type="submit" class="popup__save-btn">
+          Сохранить
+        </button>
+      </fieldset>
+    </form>
   </section>
 
   <script> </script>

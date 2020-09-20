@@ -32,8 +32,5 @@ export default class PopupWithForm extends Popup {
       input.value = '';
     })
   }
-  // 
-  fillUserInfo(info) {
-
-  }
+  
 }

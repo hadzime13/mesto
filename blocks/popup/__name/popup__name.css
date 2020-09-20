@@ -1,5 +1,6 @@
 .popup__name {
   padding-top: 34px;
+  width: 100%;
   color: black;
   margin:0 auto;
   font-family: 'Inter', 'Arial', sans-serif;

@@ -1,9 +1,10 @@
 export default class UserInfo {
-  constructor(userNameSelector, userInfoSelector, popupNameSelector, popupInfoSelector) {
+  constructor(userNameSelector, userInfoSelector, userAvatarSelector, popupNameSelector, popupInfoSelector) {
     this._userNameSelector = userNameSelector;
     this._userInfoSelector = userInfoSelector;
     this._popupNameSelector = popupNameSelector;
     this._popupInfoSelector = popupInfoSelector;
+    this._userAvatarSelector = userAvatarSelector;
   }
   // Метод сбора инфо о пользователе
   getUserInfo() {
@@ -17,7 +18,11 @@ export default class UserInfo {
   setUserInfo(newUserName, newUserInfo) {
     document.querySelector(this._userNameSelector).textContent = newUserName;
     document.querySelector(this._userInfoSelector).textContent = newUserInfo;
+    
+  }
 
+  setUserAvatar(newUserAvatar) {
+    document.querySelector(this._userAvatarSelector).style.backgroundImage = `url(${newUserAvatar})`;
   }
   fillUserForm() {
     const user = this.getUserInfo();

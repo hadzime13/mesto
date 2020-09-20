@@ -5,3 +5,7 @@
 @import url('./__like/photo-elements__like.css');
 @import url('./__like/_active/photo-elements__like_active.css');
 @import url('./__delete-btn/photo-elements__delete-btn.css');
+@import url('./__delete-btn/_inactive/photo-elements__delete-btn_inactive.css');
+@import url('./__like-span/photo-elements__like-span.css');
+@import url('./__like-wrapper/photo-elements__like-wrapper.css');
+

@@ -27,4 +27,8 @@ export default class Popup {
     const popupCloseButton = this._popup.querySelector('.popup__close-btn');
     popupCloseButton.addEventListener('click', this.close.bind(this));
   }
+  // Метод для UX
+  changeButtonOnUpload() {
+    this._popup.querySelector('.popup__save-btn').textContent = 'Cохранение...';
+  }
 }
