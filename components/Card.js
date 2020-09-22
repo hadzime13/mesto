@@ -20,7 +20,6 @@ export default class Card {
     this._handleCardClick = handleCardClick;
     this._handleDeleteCard = handleDeleteCard;
     this._handleLikeClick = handleLikeClick;
-    this._handleLikeClickBind = this._handleLikeClick.bind(this);
   }
   // Публичный метод - возвращает карточку
   createCard() {
@@ -28,6 +27,7 @@ export default class Card {
     this._handleCardMarkup(cardElement);
     this._handleCardListeners(cardElement);
     this.setLikes();
+    this._cardElement = cardElement;
     return cardElement;
   };
   // Приватный метод - обработка разметки
@@ -62,9 +62,9 @@ export default class Card {
   // Приватный метод - слушатели
   _handleCardListeners(cardElement) {
     const cardElementLike = cardElement.querySelector('.photo-elements__like');
-    cardElementLike.addEventListener('click', () => { this._handleLikeClickBind(this) });
+    cardElementLike.addEventListener('click', () => { this._handleLikeClick(this) });
     const cardDeleteButton = cardElement.querySelector('.photo-elements__delete-btn');
     cardDeleteButton.addEventListener('click', this._handleDeleteCard);
-    cardElement.querySelector('.photo-elements__image').addEventListener('click', this._handleCardClick);
+    cardElement.querySelector('.photo-elements__image').addEventListener('click', () => { this._handleCardClick(this._name, this._link) });
   };
 }

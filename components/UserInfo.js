@@ -5,29 +5,33 @@ export default class UserInfo {
     this._popupNameSelector = popupNameSelector;
     this._popupInfoSelector = popupInfoSelector;
     this._userAvatarSelector = userAvatarSelector;
+    this._userNameContainer = document.querySelector(this._userNameSelector);
+    this._userInfoContainer = document.querySelector(this._userInfoSelector);
+    this._userAvatarContainer = document.querySelector(this._userAvatarSelector);
+    this._popupUserInput = document.querySelector(this._popupNameSelector);
+    this._popupInfoInput = document.querySelector(this._popupInfoSelector);
   }
   // Метод сбора инфо о пользователе
   getUserInfo() {
     this._user = {
-      name: document.querySelector(this._userNameSelector).textContent,
-      info: document.querySelector(this._userInfoSelector).textContent
+      name: this._userNameContainer.textContent,
+      info: this._userInfoContainer.textContent
     }
     return this._user;
   }
   // Метод изменения инфо о пользователе на странице
   setUserInfo(newUserName, newUserInfo) {
-    document.querySelector(this._userNameSelector).textContent = newUserName;
-    document.querySelector(this._userInfoSelector).textContent = newUserInfo;
-    
+    this._userNameContainer.textContent = newUserName;
+    this._userInfoContainer.textContent = newUserInfo;
+
   }
 
   setUserAvatar(newUserAvatar) {
-    document.querySelector(this._userAvatarSelector).style.backgroundImage = `url(${newUserAvatar})`;
+    this._userAvatarContainer.style.backgroundImage = `url(${newUserAvatar})`;
   }
   fillUserForm() {
     const user = this.getUserInfo();
-    document.querySelector(this._popupNameSelector).value = user.name;
-    document.querySelector(this._popupInfoSelector).value = user.info;
-
+    this._popupUserInput.value = user.name;
+    this._popupInfoInput.value = user.info;
   }
 }

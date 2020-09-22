@@ -14,8 +14,10 @@ export default class PopupConfirm extends Popup {
       this._submitForm(this._target, this._class);
     });
   }
-  getInfo(targetConfirm ,classConfirm) {
+ 
+  open(targetConfirm, classConfirm) {
     this._target = targetConfirm;
     this._class = classConfirm;
+    super.open();
   }
 }

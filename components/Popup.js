@@ -2,6 +2,7 @@ export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
     this._handleEscCloseBind = this._handleEscClose.bind(this);
+    this._popupButton = this._popup.querySelector('.popup__save-btn'); 
   }
   // Метод открытие попапа, добавление обработчиков
   open() {
@@ -28,7 +29,10 @@ export default class Popup {
     popupCloseButton.addEventListener('click', this.close.bind(this));
   }
   // Метод для UX
-  changeButtonOnUpload() {
-    this._popup.querySelector('.popup__save-btn').textContent = 'Cохранение...';
+  setButtonUploadText() {
+    this._popupButton.textContent = 'Cохранение...';
+  }
+  setButtonDefaultText(defaultText) {
+    this._popupButton.textContent = defaultText;
   }
 }

@@ -8,7 +8,7 @@ export default class Section {
       this._renderer(item);
     });
   }
-  addItem(element) {
-    this._container.prepend(element);
+  addItem(element, elementOrigin) {
+    elementOrigin === 'server' ? this._container.append(element) : this._container.prepend(element);
   }
 }

@@ -8,15 +8,12 @@ export default class Api {
     if (res.ok) {
       return res.json();
     }
-    else {
-      console.log(`Error, status: ${res.status}`);
       return Promise.reject(res.statusText);
-    }
   }
 
   // Метод обработки ошибки запроса
   _handleResponseError(err) {
-    console.log(`Error,${err}, ${err['message']}`);
+    console.log(`Error,${err}`);
     return Promise.reject(err['message']);
   }
 
@@ -30,6 +27,11 @@ export default class Api {
       .then(this._handleResponse)
       .catch(this._handleResponseError)
   }
+// Не совсем понял замечание - поясните пжта, в catch выполняется _handleResponseError,
+// т,е выводится в консоль ошибка, а зачем возвращается Promise.reject. (т.е прерывается).
+// во всех методах - аналогично.
+
+
 
   // Обновление данных пользователя
   updateUser(userData) {
