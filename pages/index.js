@@ -131,7 +131,7 @@ const cardList = new Section({
 // Загрузка инфо о пользователе + загрузка карточек
 Promise.all(Promises)
   .then(([user, cards]) => {
-    userInfo.setUserInfo(user['name'], user['about']);
+    userInfo.setUserInfo(user);
     userInfo.setUserAvatar(user['avatar']);
     myID = user['_id'];
     cardList.renderItems(cards);
@@ -161,10 +161,13 @@ const popupProfile = new PopupWithForm({
   popupSelector: popupProfileSelector,
   submitForm: (values) => {
     popupProfile.setButtonUploadText();
-    const userData = userInfo.getUserInfo();
+    const userData = {
+      name: values['input-name'],
+      about: values['input-job']
+    }
     pageApi.updateUser(userData)
       .then(() => {
-        userInfo.setUserInfo(values['input-name'], values['input-job']);
+        userInfo.setUserInfo(userData);
         popupProfile.close();
         popupProfile.setButtonDefaultText('Сохранить');
       })

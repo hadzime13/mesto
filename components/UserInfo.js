@@ -20,10 +20,10 @@ export default class UserInfo {
     return this._user;
   }
   // Метод изменения инфо о пользователе на странице
-  setUserInfo(newUserName, newUserInfo) {
-    this._userNameContainer.textContent = newUserName;
-    this._userInfoContainer.textContent = newUserInfo;
-
+  setUserInfo({name, about}) {
+    this._userNameContainer.textContent = name;
+    this._userInfoContainer.textContent = about;
+    
   }
 
   setUserAvatar(newUserAvatar) {
@@ -33,5 +33,6 @@ export default class UserInfo {
     const user = this.getUserInfo();
     this._popupUserInput.value = user.name;
     this._popupInfoInput.value = user.info;
+
   }
 }

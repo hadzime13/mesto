@@ -40,7 +40,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: userData['name'],
-        about: userData['info']
+        about: userData['about']
       })
     },
     )
