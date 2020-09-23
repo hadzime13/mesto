@@ -27,7 +27,6 @@ export default class Card {
     this._handleCardMarkup(cardElement);
     this._handleCardListeners(cardElement);
     this.setLikes();
-    this._cardElement = cardElement;
     return cardElement;
   };
   // Приватный метод - обработка разметки

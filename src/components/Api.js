@@ -12,7 +12,7 @@ export default class Api {
   }
 
   // Метод обработки ошибки запроса
-  _handleResponseError(err) {
+  handleResponseError(err) {
     console.log(`Error,${err}`);
     return Promise.reject(err['message']);
   }
@@ -25,13 +25,7 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
-// Не совсем понял замечание - поясните пжта, в catch выполняется _handleResponseError,
-// т,е выводится в консоль ошибка, а зачем возвращается Promise.reject. (т.е прерывается).
-// во всех методах - аналогично.
-
-
 
   // Обновление данных пользователя
   updateUser(userData) {
@@ -45,7 +39,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
 
   // Обновление аватара
@@ -59,7 +52,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
 
   // Загрузка массива карточек с сервера
@@ -70,7 +62,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
 
   // Добавление карточки
@@ -85,7 +76,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
   // Удаление карточки 
   deleteCard(id) {
@@ -95,7 +85,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
   // Методы лайков
 
@@ -106,7 +95,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
 
   disLike(cardId) {
@@ -116,7 +104,6 @@ export default class Api {
     },
     )
       .then(this._handleResponse)
-      .catch(this._handleResponseError)
   }
 }
 

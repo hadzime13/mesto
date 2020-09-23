@@ -70,21 +70,24 @@ const pageApi = new Api({
 
 // Массив промисов
 
-const Promises = [pageApi.getUser(), pageApi.getInitialCards()];
+const promises = [pageApi.getUser(), pageApi.getInitialCards()];
 
 // Класс попапа с подтверждением
 
-const PopupWithConfirm = new PopupConfirm({
+const popupWithConfirm = new PopupConfirm({
   popupSelector: popupConfirmSelector,
   submitForm: (deleteTarget, classConfirm) => {
     pageApi.deleteCard(classConfirm._id)
       .then(() => {
         classConfirm.removeCard(deleteTarget);
-        PopupWithConfirm.close();
+        popupWithConfirm.close();
+      })
+      .catch((res) => {
+        pageApi.handleResponseError(res);
       })
   }
 })
-PopupWithConfirm.setEventListeners();
+popupWithConfirm.setEventListeners();
 
 // Экземпляр класса Section для карточек
 const cardList = new Section({
@@ -102,7 +105,7 @@ const cardList = new Section({
       },
       handleDeleteCard: (evt) => {
         const deleteTarget = evt.target.closest('.photo-elements__list-item');
-        PopupWithConfirm.open(deleteTarget, card);
+        popupWithConfirm.open(deleteTarget, card);
       },
       handleLikeClick: (card) => {
 
@@ -111,25 +114,31 @@ const cardList = new Section({
             .then((res) => {
               card.likes = res.likes;
               card.setLikes();
-            });
+            })
+            .catch((res) => {
+              pageApi.handleResponseError(res);
+            })
         }
         else {
           pageApi.like(card._id)
             .then((res) => {
               card.likes = res.likes;
               card.setLikes();
-            });
+            })
+            .catch((res) => {
+              pageApi.handleResponseError(res);
+            })
         }
       }
     });
     const cardElement = card.createCard();
-    cardList.addItem(cardElement, 'server');
+    cardList.addItem(cardElement);
   }
 }
   , cardsAreaSelector);
 
 // Загрузка инфо о пользователе + загрузка карточек
-Promise.all(Promises)
+Promise.all(promises)
   .then(([user, cards]) => {
     userInfo.setUserInfo(user);
     userInfo.setUserAvatar(user['avatar']);
@@ -137,14 +146,17 @@ Promise.all(Promises)
     cardList.renderItems(cards);
   }
   )
+  .catch((res) => {
+    pageApi.handleResponseError(res);
+  })
 
 // ***Экземпляры класса валидации, вызов валидации
-const ProfileValidator = new FormValidator(formClassNames, popupProfileForm);
-const CardsValidator = new FormValidator(formClassNames, popupCardsForm);
-const AvatarValidator = new FormValidator(formClassNames, popupAvatarEditForm);
-ProfileValidator.enableValidation();
-CardsValidator.enableValidation();
-AvatarValidator.enableValidation();
+const profileValidator = new FormValidator(formClassNames, popupProfileForm);
+const cardsValidator = new FormValidator(formClassNames, popupCardsForm);
+const avatarValidator = new FormValidator(formClassNames, popupAvatarEditForm);
+profileValidator.enableValidation();
+cardsValidator.enableValidation();
+avatarValidator.enableValidation();
 
 // Экземпляры классов попапов
 
@@ -166,10 +178,16 @@ const popupProfile = new PopupWithForm({
       about: values['input-job']
     }
     pageApi.updateUser(userData)
-      .then(() => {
-        userInfo.setUserInfo(userData);
+      .then((res) => {
+        userInfo.setUserInfo(res);
         popupProfile.close();
-        popupProfile.setButtonDefaultText('Сохранить');
+
+      })
+      .catch((res) => {
+        pageApi.handleResponseError(res);
+      })
+      .finally(() => {
+        popupProfile.setButtonDefaultText();
       })
   }
 })
@@ -195,7 +213,7 @@ const popupCard = new PopupWithForm({
           },
           handleDeleteCard: (evt) => {
             const deleteTarget = evt.target.closest('.photo-elements__list-item');
-            PopupWithConfirm.open(deleteTarget, card);
+            popupWithConfirm.open(deleteTarget, card);
           },
           handleLikeClick: (card) => {
 
@@ -204,21 +222,33 @@ const popupCard = new PopupWithForm({
                 .then((res) => {
                   card.likes = res.likes;
                   card.setLikes();
-                });
+                })
+                .catch((res) => {
+                  pageApi.handleResponseError(res);
+                })
             }
             else {
               pageApi.like(card._id)
                 .then((res) => {
                   card.likes = res.likes;
                   card.setLikes();
-                });
+                })
+                .catch((res) => {
+                  pageApi.handleResponseError(res);
+                })
             }
           }
         });
         const cardElement = card.createCard();
-        cardList.addItem(cardElement);
+        cardList.addNewItem(cardElement);
         popupCard.close();
-        popupCard.setButtonDefaultText('Создать');
+
+      })
+      .catch((res) => {
+        pageApi.handleResponseError(res);
+      })
+      .finally(() => {
+        popupCard.setButtonDefaultText();
       })
   }
 });
@@ -233,7 +263,12 @@ const popupAvatarEdit = new PopupWithForm({
     pageApi.updateUserAvatar(values['input-avatarLink'])
       .then((res) => {
         popupAvatarEdit.close();
-        popupAvatarEdit.setButtonDefaultText('Сохранить');
+      })
+      .catch((res) => {
+        pageApi.handleResponseError(res);
+      })
+      .finally((res) => {
+        popupAvatarEdit.setButtonDefaultText();
       })
   }
 })
@@ -242,16 +277,18 @@ popupAvatarEdit.setEventListeners();
 // Слушатели кнопок открытия попапов профиля, редактирования аватара и добавления карточки + заполнение полей и сброс валидации при открытии
 
 profileEditButton.addEventListener('click', function () {
-  userInfo.fillUserForm();
-  ProfileValidator.resetFormValidation();
+  const user = userInfo.getUserInfo();
+  document.querySelector(popupProfileNameSelector).value = user.name;
+  document.querySelector(popupProfileJobSelector).value = user.info;
+  profileValidator.resetFormValidation();
   popupProfile.open();
 });
 cardAddButton.addEventListener('click', function () {
-  CardsValidator.resetFormValidation();
+  cardsValidator.resetFormValidation();
   popupCard.open();
 });
 avatarEditBtn.addEventListener('click', function () {
-  AvatarValidator.resetFormValidation();
+  avatarValidator.resetFormValidation();
   popupAvatarEdit.open();
 });
 

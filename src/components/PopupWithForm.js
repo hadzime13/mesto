@@ -5,6 +5,8 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitForm = submitForm;
     this._inputList = this._popup.querySelectorAll('.popup__text');
+    this._popupButton = this._popup.querySelector('.popup__save-btn');
+    this._defaultButtonText = this._popupButton.textContent;
   }
 
   // Метод сбора данных формы
@@ -32,5 +34,12 @@ export default class PopupWithForm extends Popup {
       input.value = '';
     })
   }
-  
+  // Метод для UX
+  setButtonUploadText() {
+    this._popupButton.textContent = 'Cохранение...';
+  }
+  setButtonDefaultText() {
+    this._popupButton.textContent = this._defaultButtonText;
+
+  }
 }
